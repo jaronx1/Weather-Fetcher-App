@@ -4,6 +4,7 @@ async function getWeather() {
   const city = document.getElementById("city").value || "Toronto";
   const response = await fetch(`/api/weather?city=${encodeURIComponent(city)}`);
   const data = await response.json();
+  console.log(data);
 
   const weatherResult = document.getElementById("weatherResult");
   
