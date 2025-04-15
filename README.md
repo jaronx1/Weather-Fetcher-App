@@ -1,2 +1,2 @@
 # Weather-Fetcher-App
-Done using clouflare pages and workers 
+Done using cloudflare pages and workers 
