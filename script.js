@@ -6,14 +6,18 @@ async function getWeather() {
   const data = await response.json();
 
   const weatherResult = document.getElementById("weatherResult");
+  
 
-  if (data.cod === 200) {
+  if (response.ok && data.main && data.main.temp !== undefined) {
+    const temperatureC = (data.main.temp - 273.15).toFixed(1);
+    const windSpeedMPH = (data.wind.speed * 2.23694).toFixed(1);
+    
     weatherResult.innerHTML = `
       <strong>City:</strong> ${data.name} <br>
-      <strong>Temperature:</strong> ${(data.main.temp - 273.15).toFixed(1)}°C <br>
+      <strong>Temperature:</strong> ${temperatureC}ºC <br>
       <strong>Weather:</strong> ${data.weather[0].description} <br>
       <strong>Humidity:</strong> ${data.main.humidity}% <br>
-      <strong>Wind Speed:</strong> ${data.wind.speed} m/s
+      <strong>Wind Speed:</strong> ${windSpeedMPH} mph 
     `;
   } else {
     weatherResult.innerHTML = `<p style="color: red;">Error: ${data.message}</p>`;
