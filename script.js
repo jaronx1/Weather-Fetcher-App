@@ -10,7 +10,7 @@ async function getWeather() {
   
 
   if (response.ok && data.main && data.main.temp !== undefined) {
-    const temperatureC = Math.round(data.min.temp);
+    const temperatureC = Math.round(data.main.temp);
     const windSpeedMPH = (data.wind.speed * 2.23694).toFixed(1);
     
     weatherResult.innerHTML = `
